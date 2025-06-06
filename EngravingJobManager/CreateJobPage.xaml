@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EngravingJobManager.ViewModels"
+             x:Class="EngravingJobManager.CreateJobPage"
+             x:DataType="viewmodels:CreateJobViewModel"
+             Title="{Binding PageTitle}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="20">
+            <Label Text="Job Title (Required)" />
+            <Entry Text="{Binding JobTitle}" Placeholder="Enter job title" />
+
+            <Label Text="Customer Name (Optional)" />
+            <Entry Text="{Binding CustomerName}" Placeholder="Enter customer name" />
+
+            <Label Text="Customer Organization (Optional)" />
+            <Entry Text="{Binding CustomerOrganization}" Placeholder="Enter customer organization" />
+
+            <Label Text="Phone Number (Optional)" />
+            <Entry Text="{Binding PhoneNumber}" Placeholder="Enter phone number" Keyboard="Telephone" />
+
+            <Label Text="Details / Engraving Settings (Optional)" />
+            <Editor Text="{Binding Details}" Placeholder="Enter job details or settings" HeightRequest="100" AutoSize="TextChanges" />
+
+            <Label Text="Photos" FontAttributes="Bold" Margin="0,10,0,5" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button Grid.Column="0" Text="Add from Gallery" Command="{Binding AddPhotoFromGalleryCommand}" />
+                <Button Grid.Column="1" Text="Add from Camera" Command="{Binding AddPhotoFromCameraCommand}" />
+            </Grid>
+
+            <CollectionView ItemsSource="{Binding PhotoPaths}" HeightRequest="150" Margin="0,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="5" Margin="0,0,0,5" BorderColor="LightGray" CornerRadius="5">
+                            <HorizontalStackLayout Spacing="10">
+                                <Image Source="{Binding .}" 
+                                       Aspect="AspectFill" 
+                                       HeightRequest="60" 
+                                       WidthRequest="60"/>
+                                <Label Text="{Binding .}" 
+                                       VerticalOptions="Center" 
+                                       LineBreakMode="TailTruncation"
+                                       FontSize="Micro"/>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <Label Text="No photos added yet." HorizontalOptions="Center" VerticalOptions="Center"/>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+
+            <Button Text="Save Job" Command="{Binding SaveJobCommand}" HorizontalOptions="FillAndExpand" Margin="0,20,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

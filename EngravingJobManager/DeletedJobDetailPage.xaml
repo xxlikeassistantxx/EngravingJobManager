@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:EngravingJobManager.Models"
+             xmlns:viewmodels="clr-namespace:EngravingJobManager.ViewModels"
+             x:Class="EngravingJobManager.DeletedJobDetailPage"
+             x:DataType="viewmodels:DeletedJobDetailViewModel"
+             Title="{Binding SelectedJob.Title, StringFormat='Deleted Job: {0}'}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="20">
+
+            <Label Text="Job Title" FontAttributes="Bold" />
+            <Label Text="{Binding SelectedJob.Title}" FontSize="Medium"/>
+
+            <Label Text="Customer Name" FontAttributes="Bold" Margin="0,10,0,0"/>
+            <Label Text="{Binding SelectedJob.CustomerName}" />
+
+            <Label Text="Customer Organization" FontAttributes="Bold" Margin="0,10,0,0"/>
+            <Label Text="{Binding SelectedJob.CustomerOrganization}" />
+
+            <Label Text="Phone Number" FontAttributes="Bold" Margin="0,10,0,0"/>
+            <Label Text="{Binding SelectedJob.PhoneNumber}" />
+
+            <Label Text="Date Created" FontAttributes="Bold" Margin="0,10,0,0"/>
+            <Label Text="{Binding SelectedJob.DateCreated, StringFormat='{0:yyyy-MM-dd HH:mm:ss}'}" />
+
+            <Label Text="Details / Engraving Settings" FontAttributes="Bold" Margin="0,10,0,0"/>
+            <Frame Padding="5" BorderColor="LightGray" CornerRadius="3" Margin="0,0,0,10">
+                <Label Text="{Binding SelectedJob.Details}" MinimumHeightRequest="60" />
+            </Frame>
+
+            <Label Text="Photos" FontAttributes="Bold" Margin="0,10,0,5"/>
+            <CollectionView ItemsSource="{Binding SelectedJob.Photos}" HeightRequest="250">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal" Span="2" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:PhotoItem">
+                        <Frame Padding="0" BorderColor="Gray" CornerRadius="5" IsClippedToBounds="True">
+                            <Image Source="{Binding PhotoPath}" 
+                                   Aspect="AspectFill" 
+                                   HeightRequest="100" 
+                                   WidthRequest="100"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <Label Text="No photos for this job." HorizontalOptions="Center" VerticalOptions="Center"/>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+            <HorizontalStackLayout Spacing="10" Margin="0,20,0,0" HorizontalOptions="FillAndExpand">
+                <Button Text="Restore Job" Command="{Binding RestoreJobCommand}" BackgroundColor="ForestGreen" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Delete Permanently" Command="{Binding PermanentlyDeleteJobCommand}" BackgroundColor="DarkRed" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

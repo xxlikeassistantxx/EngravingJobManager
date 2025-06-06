@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EngravingJobManager.ViewModels"
+             x:Class="EngravingJobManager.PhotoDetailPage"
+             x:DataType="viewmodels:PhotoDetailViewModel"
+             Title="Photo Detail"
+             BackgroundColor="Black">
+
+    <Grid>
+        <Image Source="{Binding PhotoSource}"
+               Aspect="AspectFit"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+    </Grid>
+
+</ContentPage>

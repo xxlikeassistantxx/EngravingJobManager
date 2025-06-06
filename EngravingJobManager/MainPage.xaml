@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EngravingJobManager.MainPage"
+             Title="Job Manager">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="15"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Engraving Job Manager"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CreateNewJobButton"
+                Text="1. Create New Job"
+                SemanticProperties.Hint="Navigates to the page to create a new job"
+                Clicked="OnCreateNewJobClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="SearchJobByTitleButton"
+                Text="2. Search for Job by Title"
+                SemanticProperties.Hint="Navigates to the job search page by title"
+                Clicked="OnSearchJobByTitleClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="SearchJobByDateButton"
+                Text="3. Search for Job by Date"
+                SemanticProperties.Hint="Navigates to the job search page by date"
+                Clicked="OnSearchJobByDateClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="SearchAllJobsButton"
+                Text="4. Search Through All Jobs"
+                SemanticProperties.Hint="Navigates to the page to browse all jobs"
+                Clicked="OnSearchAllJobsClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="SearchJobsByClienteleButton"
+                Text="5. Search for Jobs by Clientele"
+                SemanticProperties.Hint="Navigates to the job search page by clientele"
+                Clicked="OnSearchJobsByClienteleClicked"
+                HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="DeletedJobsFolderButton"
+                Text="6. Deleted Jobs Folder"
+                SemanticProperties.Hint="Navigates to the deleted jobs folder"
+                Clicked="OnDeletedJobsFolderClicked"
+                HorizontalOptions="Fill" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
